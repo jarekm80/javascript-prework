@@ -23,6 +23,15 @@ if(playerInput == '1'){
 } else if (playerInput == 3) {
     playerMove = 'nożyce'}
 
+printMessage('Ruch kompa to: ' + computerMove)    
 printMessage('Twój ruch to: ' + playerMove);
 
-//printMessage('Zagrałem ' + computerMove + '! Jeśli Twój ruch to '+ playerMove +', to wygrywasz!');
+if (playerMove == 'nieznany ruch'){
+    printMessage('Wprowadziłeś nieobsługiwany znak');
+}else if (( computerMove == 'kamień' && playerMove == 'papier') || ( computerMove == 'papier' && playerMove == 'nożyce') || ( computerMove == 'nożyce' && playerMove == 'kamień')) {
+    printMessage('Ty wygrywasz!');
+} else if (computerMove == playerMove){
+    printMessage('Remis');
+} else {
+    printMessage('Wygrywa komputer');
+}
