@@ -1,4 +1,5 @@
-function getMoveName(argMoveId){
+{
+const computerMove = function (argMoveId){
     if(argMoveId == 1){
         return 'kamień';
     } else if (argMoveId == 2) {
@@ -6,7 +7,7 @@ function getMoveName(argMoveId){
     } else {return 'nożyce'}
 }
 
-function displayResult(argComputerMove, argPlayerMove){
+const displayResult = function (argComputerMove, argPlayerMove){
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
     if (argPlayerMove == 'nieznany ruch'){
         printMessage('Wprowadziłeś nieobsługiwany znak');
@@ -19,8 +20,7 @@ function displayResult(argComputerMove, argPlayerMove){
     }
 }  
 
-function getPlayerInput(argPlayerInput){
-    let argPlayerMove = 'nieznany ruch';
+const playerMove = function (argPlayerInput){
     if(argPlayerInput == '1'){
         argPlayerMove = 'kamień';
     } else if (argPlayerInput == 2) {
@@ -32,12 +32,13 @@ function getPlayerInput(argPlayerInput){
 
 function playGame(playerInput){
     clearMessages();
-    let randomNumber = Math.floor(Math.random() * 3 + 1);
-    let computerMove=getMoveName(randomNumber);
-    let playerMove=getPlayerInput(playerInput);
-    displayResult(computerMove,playerMove);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    //let computerMove=getMoveName(randomNumber);
+    //let playerMove=getPlayerInput(playerInput);
+    displayResult(computerMove(randomNumber),playerMove(playerInput));
 }
 
 document.getElementById('play-rock').addEventListener('click', function(){ playGame(1)});
 document.getElementById('play-paper').addEventListener('click', function(){ playGame(2)});
 document.getElementById('play-scissors').addEventListener('click', function(){ playGame(3)});
+}
